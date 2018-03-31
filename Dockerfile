@@ -1,11 +1,24 @@
 FROM circleci/openjdk:8-jdk-browsers
 MAINTAINER andrew.larsen@vernonsoftwaresolutoins.com
+
 #install nodejs
 RUN curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
 RUN sudo apt-get install -y nodejs
 
 #Install newman 
 RUN sudo npm install newman -g
+
+# Install awscli
+# http://docs.aws.amazon.com/cli/latest/userguide/awscli-install-bundle.html
+RUN sudo wget "s3.amazonaws.com/aws-cli/awscli-bundle.zip" -O "awscli-bundle.zip" && \
+    sudo unzip awscli-bundle.zip && \
+    # Workaround to get awscli to work properly
+    # https://github.com/aws/aws-cli/issues/1957#issuecomment-271057166
+    sudo apt-get install groff-base && \
+    sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws && \
+    sudo rm awscli-bundle.zip && \
+    sudo rm -rf awscli-bundle
+
 
 #Install docker
 RUN set -x \

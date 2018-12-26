@@ -28,6 +28,6 @@ RUN set -x \
     mv /tmp/docker/* /usr/bin
 
 #Install make
-RUN sudo apt-get install --reinstall make
+RUN apt-get install --reinstall make
 
 WORKDIR /

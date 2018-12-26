@@ -27,4 +27,7 @@ RUN set -x \
     tar -xz -C /tmp -f /tmp/docker-$VER.tgz \
     mv /tmp/docker/* /usr/bin
 
+#Install make
+RUN sudo apt-get install --reinstall make
+
 WORKDIR /

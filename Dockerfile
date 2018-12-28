@@ -1,4 +1,4 @@
-FROM circleci/openjdk:8-jdk-browsers
+FROM circleci/openjdk:8u181-jdk-node-browsers
 MAINTAINER andrew.larsen@vernonsoftwaresolutoins.com
 
 #install nodejs
